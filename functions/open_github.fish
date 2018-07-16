@@ -2,12 +2,12 @@ function open_github --description 'Open the GitHub page for the current git bra
   set -l fetch_url (command git remote --verbose show -n origin ^/dev/null | command grep Fetch | cut -c 14- )
 
   if [ $status -gt 0 ]
-    echo 'Not a git repo.'
+    echo 'Not in a git repository.'
     return 1
   end
 
   if [ -z $fetch_url ]
-    echo 'Not a git repo.'
+    echo 'Not in a git repository.'
     return 1
   end
 
