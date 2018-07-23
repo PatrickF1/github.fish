@@ -23,7 +23,7 @@ function open_github --description 'Open the GitHub page for the current git bra
     set branch (command git rev-parse HEAD)
   end
 
-  set url (echo "$fetch_url/tree/$branch" | sed 's|git@github.com:\(.*\)\.git|https://github.com/\1|')
+  set -l url (echo "$fetch_url/tree/$branch" | sed 's|git@github.com:\(.*\)\.git|https://github.com/\1|')
 
   open "$url/$argv"
 end
