@@ -1,0 +1,1 @@
+alias github open_github

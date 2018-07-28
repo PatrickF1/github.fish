@@ -17,8 +17,10 @@ fisher patrickf3139/open_github
 ## Usage
 While in a git repository with a GitHub upstream, run
 ```fish
-open_github
+github
 ```
+(`open_github` is aliased to `github`).
+
 If GitHub 404s, make sure you have pushed the current branch.
 
 [slack-link]: https://fisherman-wharf.herokuapp.com
