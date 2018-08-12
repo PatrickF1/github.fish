@@ -2,17 +2,17 @@ function open_github --description 'Open the GitHub page for the current git bra
   set -l fetch_url (command git remote --verbose show -n origin ^/dev/null | command grep Fetch | cut -c 14- )
 
   if [ $status -gt 0 ]
-    echo 'Not in a git repository.'
+    echo 'Not in a git repository.' >&2
     return 1
   end
 
   if [ -z $fetch_url ]
-    echo 'Not in a git repository.'
+    echo 'Not in a git repository.' >&2
     return 1
   end
 
   if [ -z (echo $fetch_url | grep github ) ]
-    echo 'The remote "origin" is not a GitHub repository.'
+    echo 'The remote "origin" is not a GitHub repository.' >&2
     return 2
   end
 
