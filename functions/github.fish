@@ -1,4 +1,4 @@
-function open_github --description 'Open the GitHub page for the current git branch'
+function github --description 'Open the GitHub page for the current git branch'
   set -l fetch_url (command git remote --verbose show -n origin ^/dev/null | command grep Fetch | cut -c 14- )
 
   if [ $status -gt 0 ]
