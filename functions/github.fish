@@ -1,5 +1,5 @@
 function github --description 'Open the GitHub page for the current git branch'
-  set -l fetch_url (command git remote --verbose show -n origin ^/dev/null | command grep Fetch | cut -c 14- )
+  set -l fetch_url (git ls-remote --get-url ^/dev/null)
 
   if [ $status -gt 0 ]
     echo 'Not in a git repository.' >&2
