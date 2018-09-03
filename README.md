@@ -22,7 +22,7 @@ fisher patrickf3139/open_github
 
 With [Oh My Fish]
 ```fish
-omf install https://github.com/patrickf3139/open_github
+omf install open_github
 ```
 
 ## Usage
