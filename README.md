@@ -9,43 +9,42 @@
 
 <br/>
 
-`open_github` provides a shortcut to open the GitHub tree or pull request for the current git branch in your browser.
-The basic functionality is heavily adapted with permission from [snatchev's](https://github.com/snatchev) wonderful [gist](https://gist.github.com/snatchev/34e793af8ab1114d9e42).
+`open_github` provides a shortcut to open the current branch's pull request or tree view on GitHub in your browser. Say that you are in working with a remote repository called `some_tool` that is owned by `some_user_or_org`. And are on a branch called `fix_a_bug` for which you created a PR that has id `32`. `open_github` allows you to quickly navigate to `https://github.com/some_user_or_org/some_tool/tree/fix_a_bug` (the tree view of the branch) or to `https://github.com/some_user_or_org/some_tool/pull/32` (the PR).
 
 ## Install
-For the basic usage of opening the page for the current branch in your browser, you only need to install the plugin.
+### Basic installation
+If you only want to be able to open the tree view for the current branch on GitHub, you only need to install the plugin.
+
 With [fisher]
 ```
 fisher patrickf3139/open_github
 ```
-
 With [Oh My Fish]
 ```fish
 omf install open_github
 ```
-
-To use `open_github` for opening pull requests, you will need to set up two more dependencies. First, install install [gron](https://github.com/tomnomnom/gron):
+### Installing open PR functionality
+If you want to be able to open the pull request created for the current branch on GitHub, you will need to do a bit more set up. The first step is to obtain a GitHub Personal Access token and set it as an environment variable. This is needed because `open_github` queries the [GitHub API](https://developer.github.com/v3/pulls/#list-pull-requests) to get information about your repositories' pull requests. See the section below for further instructions. The second thing needed is [gron](https://github.com/tomnomnom/gron), which is used to parse the JSON returned by GitHub's API. It can be easily installed with `brew`:
 ```fish
 brew install gron
 ```
- Secondly, you will need to provide a GitHub Personal Access token. 
- These are needed because `open_github` queries the [GitHub API](https://developer.github.com/v3/pulls/#list-pull-requests) to get information about your repositories' pull requests and uses `gron` parses the JSON response using `gron`. And because the API hides information about private repositires, `open_github` needs to be authorized.
 
-### Providing GitHub Credentials
-Follow GitHub's directions for creating a personal access token [here](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line)
+#### Providing GitHub Credentials
+Follow GitHub's directions for creating a personal access token [here](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line).
 These are the minimal permissions the token will need:
 <table><tr><td>
     <img alt="token permissions" src="./images/required-token-permissions.png">
 </td></tr></table>
 
-If you work with repositories protected by SSO, you will also need to enable SSO for that token. See directions [here](https://help.github.com/articles/authorizing-a-personal-access-token-for-use-with-a-saml-single-sign-on-organization)
+If you work with repositories protected by SSO, make sure you follow step 10. Or see the directions [here](https://help.github.com/articles/authorizing-a-personal-access-token-for-use-with-a-saml-single-sign-on-organization).
 
-Now, the script will need to read it from the environment. Set `GITHUB_AUTH_TOKEN` like so in your `config.fish` or similar:
+Finally, set the token as the environment variable `GITHUB_AUTH_TOKEN` like so in your `config.fish` or similar so `open_github` can access it:
 ```fish
 set -x GITHUB_AUTH_TOKEN <insert token here>
 ```
+
 ## Usage
-The `github` command only works when your working directory is within a git repository that has a GitHub upstream set. To open the branch page for the current branch, run
+The `github` command only works when your working directory is a git repository that has a GitHub upstream configured. To open the tree view for the current branch, run
 ```fish
 github
 ```
