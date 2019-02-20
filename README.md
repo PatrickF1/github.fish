@@ -9,7 +9,12 @@
 
 <br/>
 
-`open_github` provides a shortcut to open the current branch's pull request or tree view on GitHub in your browser. Say that you are in working with a remote repository called `some_tool` that is owned by `some_user_or_org`. And are on a branch called `fix_a_bug` for which you created a PR that has id `32`. `open_github` allows you to quickly navigate to `https://github.com/some_user_or_org/some_tool/tree/fix_a_bug` (the tree view of the branch) or to `https://github.com/some_user_or_org/some_tool/pull/32` (the PR).
+Navigate to the GitHub pages for your branches from the command line! Say that you are working with a remote repository called `some_tool` that is owned by `some_user_or_org`. And you are on a branch called `fix_a_bug` for which a PR has been created with id `32`. `open_github` provides a shortcut to open the current branch's 
+
+- pull request page ([https://github.com/some_user_or_org/some_tool/pull/32](_blank))
+- tree view ([https://github.com/some_user_or_org/some_tool/tree/fix_a_bug](_blank))
+
+in your browser. Currently only compatible with Mac OS.
 
 ## Install
 ### Basic installation
