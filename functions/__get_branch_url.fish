@@ -1,3 +1,4 @@
+#!/usr/bin/env fish
 # meant only to be called by github.fish
 function __get_branch_url
     set -l fetch_url $argv[1]

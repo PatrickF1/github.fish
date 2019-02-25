@@ -1,3 +1,4 @@
+#!/usr/bin/env fish
 function github --description 'Open the GitHub page for the current git branch'
     set -l fetch_url (git ls-remote --get-url ^/dev/null)
 

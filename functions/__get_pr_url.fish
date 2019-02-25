@@ -1,3 +1,4 @@
+#!/usr/bin/env fish
 # meant only to be called by github.fish
 function __get_pr_url
     if not type -q gron

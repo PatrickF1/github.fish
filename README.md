@@ -29,7 +29,7 @@ With [Oh My Fish]
 omf install open_github
 ```
 ### Installing open PR functionality
-If you want to be able to open the pull request created for the current branch on GitHub, you will need to do a bit more set up. The first step is to obtain a GitHub Personal Access token and set it as an environment variable. This is needed because `open_github` queries the [GitHub API](https://developer.github.com/v3/pulls/#list-pull-requests) to get information about your repositories' pull requests. See the section below for further instructions. The second thing needed is [gron](https://github.com/tomnomnom/gron), which is used to parse the JSON returned by GitHub's API. It can be easily installed with `brew`:
+If you want to be able to open the pull request created for the current branch on GitHub, you will need to do a bit more set up. The first step is to obtain a GitHub Personal Access token and set it as an environment variable. This is needed because `open_github` queries the [GitHub API](https://developer.github.com/v3/pulls/#list-pull-requests) to get information about your repositories' pull requests. See the section below for further instructions. The second is to install [gron](https://github.com/tomnomnom/gron), which is used to parse the JSON returned by GitHub's API:
 ```fish
 brew install gron
 ```
@@ -43,7 +43,7 @@ These are the minimal permissions the token will need:
 
 If you work with repositories protected by SSO, make sure you follow step 10. Or see the directions [here](https://help.github.com/articles/authorizing-a-personal-access-token-for-use-with-a-saml-single-sign-on-organization).
 
-Finally, set the token as the environment variable `GITHUB_AUTH_TOKEN` like so in your `config.fish` or similar so `open_github` can access it:
+After you have obtained a token, assign it to the environment variable `GITHUB_AUTH_TOKEN` like so in your `config.fish` (or similar) so that `open_github` can access it:
 ```fish
 set -x GITHUB_AUTH_TOKEN <insert token here>
 ```
