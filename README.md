@@ -9,10 +9,10 @@
 
 <br/>
 
-Navigate to the GitHub pages for your branches from the command line! Say that you are working with a remote repository called `some_tool` that is owned by `some_user_or_org`. And you are on a branch called `fix_a_bug` for which a PR has been created with id `32`. `open_github` provides a shortcut to open the current branch's 
+Navigate to the GitHub pages for your branches from the command line! Say that you are working with a remote repository called `Repo` that is owned by `Org`. And you are on a branch called `branch` for which a PR has been created with id `32`. `open_github` provides a shortcut to open the current branch's 
 
-- pull request page ([https://github.com/some_user_or_org/some_tool/pull/32]())
-- tree view ([https://github.com/some_user_or_org/some_tool/tree/fix_a_bug]())
+- pull request page ([https://github.com/Org/Repo/pull/32]())
+- tree view ([https://github.com/Org/Repo/tree/branch]())
 
 in your browser. Currently only compatible with Mac OS.
 
