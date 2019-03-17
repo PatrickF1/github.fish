@@ -13,7 +13,7 @@ function github --description 'Open the GitHub page for the current git branch'
         return 2
     end
 
-    if set -q $argv[1]; and [ "$argv[1]" = "--pr" ]
+    if set -q argv[1]; and [ "$argv[1]" = "--pr" ]
         set url (__get_pr_url "$fetch_url")
     else
         set url (__get_branch_url "$fetch_url")
