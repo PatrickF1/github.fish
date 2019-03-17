@@ -19,9 +19,9 @@ function __get_pr_url
         return 3
     end
 
-    echo "https://api.github.com/repos/$owner_slash_repo/pulls?state=all&head=$owner_slash_repo:$branch" >&2
+    echo "Querying GitHub. This may take several seconds." >&2
 
-    set -l pull_requests_json (curl -H "Authorization: token $GITHUB_AUTH_TOKEN" "https://api.github.com/repos/$owner_slash_repo/pulls?state=all&head=$owner_slash_repo:$branch")
+    set -l pull_requests_json (curl --silent -H "Authorization: token $GITHUB_AUTH_TOKEN" "https://api.github.com/repos/$owner_slash_repo/pulls?state=all&head=$owner_slash_repo:$branch")
     if echo "$pull_requests_json" | grep -qi '"Not Found",'
         echo "Could not access the GitHub API. Please double check your GitHub auth token." >&2
         return 2
