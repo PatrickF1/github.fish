@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 # meant only to be called by github.fish
-function __get_pr_url
+function __get_pr_url --argument-names validated_fetch_url
     if not type -q gron
         echo "You must have gron (https://github.com/tomnomnom/gron) installed.." >&2
         echo "If you are on Mac and use homebrew, try 'brew install gron'" >&2
@@ -9,9 +9,8 @@ function __get_pr_url
         echo "Can't find GitHub auth token. Please set GITHUB_AUTH_TOKEN in your environment." >&2
         return 2
     end
-    set -l fetch_url $argv[1]
     # format of owner_slash_repo should be owner/repo, e.g. patrickf3139/open_github
-    set -l owner_slash_repo (echo "$fetch_url" | sed "s/^git@github.com://" | sed "s/.git\$//")
+    set -l owner_slash_repo (echo "$validated_fetch_url" | sed "s/^git@github.com://" | sed "s/.git\$//")
 
     set -l branch (command git rev-parse --abbrev-ref HEAD)
     if [ $branch = 'HEAD' ]
