@@ -13,10 +13,14 @@ function github --description 'Open the GitHub page for the current git branch'
         return 2
     end
 
+    # generate the repository's GitHub homepage from the fetch url, e.g.
+    # git@github.com:patrickf3139/open_github.git -> https://github.com/patrickf3139/open_github
+    set github_base_url (echo "$fetch_url" | sed 's|git@github.com:\(.*\)\.git|https://github.com/\1|')
+
     if set -q argv[1]; and [ "$argv[1]" = "--pr" ]
-        set url (__get_pr_url "$fetch_url")
+        set url (__get_pr_url "$github_base_url")
     else
-        set url (__get_branch_url "$fetch_url")
+        set url (__get_branch_url "$github_base_url")
     end
 
     if [ -z $url ]

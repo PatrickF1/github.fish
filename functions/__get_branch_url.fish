@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 # meant only to be called by github.fish
-function __get_branch_url --argument-names validated_fetch_url
+function __get_branch_url --argument-names github_base_url
     set -l branch (command git rev-parse --abbrev-ref HEAD)
 
     if [ $branch = 'HEAD' ]
@@ -8,6 +8,6 @@ function __get_branch_url --argument-names validated_fetch_url
         set branch (command git rev-parse HEAD)
     end
 
-    set -l url (echo "$validated_fetch_url/tree/$branch" | sed 's|git@github.com:\(.*\)\.git|https://github.com/\1|')
+    set -l url (echo "$github_base_url/tree/$branch")
     echo "$url"
 end
