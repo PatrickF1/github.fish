@@ -2,7 +2,7 @@
 # meant only to be called by github.fish
 function __get_pr_url --argument-names github_base_url
     if not type -q gron
-        echo "You must have gron (https://github.com/tomnomnom/gron) installed.." >&2
+        echo "You must have gron (https://github.com/tomnomnom/gron) installed." >&2
         echo "If you are on Mac and use homebrew, try 'brew install gron'" >&2
         return 1
     else if not set -q GITHUB_AUTH_TOKEN
