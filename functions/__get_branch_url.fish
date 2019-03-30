@@ -5,9 +5,11 @@ function __get_branch_url --argument-names github_base_url
 
     if [ $branch = 'HEAD' ]
         # couldn't find a branch or tag, so use the commit hash
-        set branch (command git rev-parse HEAD)
+        set commit_hash (command git rev-parse HEAD)
+        echo "$github_base_url/tree/$commit_hash"
+    else
+        set -l upstream_branch_name (git rev-parse --symbolic-full-name "$branch@{u}")
+        echo "github_base_url/tree/$upstream_branch_name"
     end
 
-    set -l url (echo "$github_base_url/tree/$branch")
-    echo "$url"
 end
