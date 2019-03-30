@@ -9,7 +9,7 @@ function __get_branch_url --argument-names github_base_url
         echo "$github_base_url/tree/$commit_hash"
     else
         set -l upstream_branch_name (git rev-parse --symbolic-full-name "$branch@{u}")
-        echo "github_base_url/tree/$upstream_branch_name"
+        echo "$github_base_url/tree/$upstream_branch_name"
     end
 
 end
