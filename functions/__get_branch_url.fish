@@ -5,11 +5,12 @@ function __get_branch_url --argument-names github_base_url
 
     if [ $branch = 'HEAD' ]
         # couldn't find a branch or tag, so use the commit hash
-        set commit_hash (command git rev-parse HEAD)
-        echo "$github_base_url/tree/$commit_hash"
+        set ref_name (command git rev-parse HEAD)
     else
-        set -l upstream_branch_name (git rev-parse --symbolic-full-name "$branch@{u}" | cut -d '/' -f 4)
-        echo "$github_base_url/tree/$upstream_branch_name"
+        # In case the upstream branch is named differently from the local branch, grab
+        # the branch's upstream name. The output of rev-parse needs to be trimmed as it
+        # is in the format refs/remotes/remote_name/branch_name.
+        set ref_name (git rev-parse --symbolic-full-name "$branch@{u}" | cut -d '/' -f 4,5,6)
     end
-
+    echo "$github_base_url/tree/$ref_name"
 end
