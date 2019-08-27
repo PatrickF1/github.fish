@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 # meant only to be called by github.fish
-function __get_pr_url --argument-names github_base_url
+function __get_pr_url --argument-names github_base_url debug_mode
     if not type -q gron
         echo "You must have gron (https://github.com/tomnomnom/gron) installed." >&2
         echo "If you are on Mac and use homebrew, try 'brew install gron'" >&2
@@ -20,7 +20,12 @@ function __get_pr_url --argument-names github_base_url
 
     # format of owner_slash_repo should be owner/repo, e.g. patrickf3139/open_github
     set -l owner_slash_repo (echo "$github_base_url" | sed "s|^https://github.com/||")
-    set -l pull_requests_json (curl --silent -H "Authorization: token $GITHUB_AUTH_TOKEN" "https://api.github.com/repos/$owner_slash_repo/pulls?state=all&head=$owner_slash_repo:$branch")
+    set -l request_url "https://api.github.com/repos/$owner_slash_repo/pulls?state=all&head=$owner_slash_repo:$branch"
+    set -q debug_mode[1]; and echo "Making a request to $request_url" >&2
+
+    set -l pull_requests_json (curl --silent -H "Authorization: token $GITHUB_AUTH_TOKEN" "$request_url")
+    set -q debug_mode[1]; and echo "Response from Github API was $pull_requests_json" >&2
+
     if echo "$pull_requests_json" | grep -qi '"Not Found",'
         echo "Could not access the GitHub API. Please double check your GitHub auth token." >&2
         return 2

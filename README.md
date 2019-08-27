@@ -61,5 +61,7 @@ github --pr
 ```
 If the command fails, double check that your access token is valid and that a pull request has been opened for the current branch. Note that if multiple pull requests have been created for the current branch, the latest PR will be used.
 
+Think you've found a bug? Please run in debug mode with the `-d` flag and open an issue with the debug log.
+
 [fisher]: https://github.com/jorgebucaran/fisher
 [Oh My Fish]: https://github.com/oh-my-fish/oh-my-fish
