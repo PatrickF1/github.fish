@@ -33,6 +33,6 @@ function github --description 'Open the GitHub page for the current git branch'
         echo 'Failed to generate the url!' >&2
         return 3
     else
-        command open "$url"
+        open "$url"
     end
 end

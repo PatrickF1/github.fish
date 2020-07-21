@@ -14,7 +14,7 @@ Navigate to the GitHub pages for your branches from the command line! Say that y
 - pull request page ([https://github.com/Org/Repo/pull/32]())
 - tree view ([https://github.com/Org/Repo/tree/branch]())
 
-in your browser. Currently only compatible with Mac OS.
+in your browser. Should work on macOS and Linux.
 
 ## Install
 ### Basic installation
