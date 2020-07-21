@@ -8,7 +8,7 @@ function github --description 'Open the GitHub page for the current git branch'
     else if [ -z $fetch_url ]
         echo 'Not in a git repository.' >&2
         return 1
-    else if [ -z (echo $fetch_url | grep "^git@github.com" ) ]
+    else if [ -z (echo $fetch_url | grep "git@github.com" ) ]
         echo 'The upstream remote of the current branch is not a GitHub repository.' >&2
         return 2
     end
