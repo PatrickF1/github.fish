@@ -22,11 +22,11 @@ If you only want to be able to open the tree view for the current branch on GitH
 
 With [fisher]
 ```
-fisher add patrickf3139/github.fish
+fisher add patrickf1/github.fish
 ```
 With [Oh My Fish]
 ```fish
-omf install https://github.com/patrickf3139/github.fish
+omf install https://github.com/patrickf1/github.fish
 ```
 ### Installing open PR functionality
 If you want to be able to open the pull request created for the current branch on GitHub, you will need to do a bit more set up. The first step is to obtain a GitHub Personal Access token and set it as an environment variable. This is needed because `github.fish` queries the [GitHub API](https://developer.github.com/v3/pulls/#list-pull-requests) to get information about your repositories' pull requests. See the section below for further instructions. The second is to install [gron](https://github.com/tomnomnom/gron), which is used to parse the JSON returned by GitHub's API:

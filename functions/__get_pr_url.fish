@@ -18,7 +18,7 @@ function __get_pr_url --argument-names github_base_url debug_mode
 
     echo "Querying GitHub. This may take several seconds..." >&2
 
-    # format of owner_slash_repo should be owner/repo, e.g. patrickf3139/github.fish
+    # format of owner_slash_repo should be owner/repo, e.g. patrickf1/github.fish
     set -l owner_slash_repo (echo "$github_base_url" | sed "s|^https://github.com/||")
     set -l request_url "https://api.github.com/repos/$owner_slash_repo/pulls?state=all&head=$owner_slash_repo:$branch"
     set -q debug_mode[1]; and echo "Making a request to $request_url" >&2

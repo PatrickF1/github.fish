@@ -14,7 +14,7 @@ function github --description 'Open the GitHub page for the current git branch'
     end
 
     # generate the repository's GitHub homepage from the fetch url, e.g.
-    # git@github.com:patrickf3139/github.fish -> https://github.com/patrickf3139/github.fish
+    # git@github.com:patrickf1/github.fish -> https://github.com/patrickf1/github.fish
     set github_base_url (echo "$fetch_url" | sed 's|git@github.com:\(.*\)\.git|https://github.com/\1|')
 
     # https://fishshell.com/docs/current/commands.html#argparse
